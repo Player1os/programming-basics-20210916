@@ -1,0 +1,108 @@
+<script src="../base.js"></script>
+<script>
+execute(() => {
+    /*
+    printText('***\n');
+    printText('***\n');
+    printText('***');
+    //*/
+    /*
+    const x = `${"***"}
+  ${"***"}
+    ${"***"}`
+    printText(x);
+    //*/
+    /*
+    for (let i = 0; i < 3; ++i) {
+        for (let j = 0; j <= i; ++j) {
+            printText('*');
+        }
+        printText('\n');
+    }
+    */
+   
+    // let x = '';
+    // for (let i = 0; i < 3; ++i) {
+    //     for (let j = 0; j <= i; ++j) {
+    //         x += '*';
+    //     }
+    //     x += '\n';
+    // }
+    // printText(x);
+
+    // let x = '';
+    // for (let i = 0; i < 7; ++i) {
+    //     for (let j = 0; j <= i; ++j) {
+    //         x += '*';
+    //     }
+    //     x += '\n';
+    // }
+    // printText(x);
+
+    // let y = getInputText();
+    // let x = new String; // to isté čo ''; // Chceme inicializovať hodnoty premenných.
+    // for (let i = 0; i < y; ++i) {
+    //     for (let j = 0; j <= i; ++j) {
+    //         x += '*';
+    //     }
+    //     x += '\n';
+    // }
+    // printText(x);
+
+    // Boolean
+    // Number
+    // String
+    // Array
+    // Object
+
+    // let i = 4
+    // let x = i % 2
+    // printText(x);
+
+    /*
+    if (false == null) {
+        printText('nebo je modré');
+    }
+    if (false === 0) {
+        printText('nebo je zelené');
+    }
+    */
+
+    // let xJeParne = (x % 2) === 0
+
+    // let i = 0
+    // let x = ++i
+    // console.log(x)
+    // console.log(i)
+
+    // for (let i = 0; i < 9; ++i) {
+    //     console.log(i)
+    // }
+    // console.log('-')
+    // for (let i = 0; i < 9; i++) {
+    //     console.log(i)
+    // }
+    // console.log('-')
+    // for (let i = 0; i < 9; i += 1) {
+    //     console.log(i)
+    // }
+
+    let y = getInputText();
+    let x = '';
+    for (
+        let i = 0;
+        i < y;        
+        i += 1
+    )
+    {
+        for (let j = 0; j < y; j += 1) {
+            if ((j % 2) === 0) {
+                    x += '*';
+            }
+        }
+        x += '\n';
+    }
+    printText(x);
+
+});
+</script>
