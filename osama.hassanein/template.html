@@ -87,22 +87,88 @@ execute(() => {
     //     console.log(i)
     // }
 
-    let y = getInputText();
-    let x = '';
-    for (
-        let i = 0;
-        i < y;        
-        i += 1
-    )
-    {
-        for (let j = 0; j < y; j += 1) {
-            if ((j % 2) === 0) {
-                    x += '*';
-            }
-        }
-        x += '\n';
-    }
-    printText(x);
+    // let y = getInputText();
+    // let x = '';
+    // for (let i = 0; i < y; i += 1) {
+    //     if ((i % 2) === 0) {
+    //         for (let j = 0; j < y; j += 1) {
+    //             if ((j % 2) === 0) {
+    //                 x += '*';
+    //             } else {
+    //                 x += ' ';
+    //             }
+    //         }
+    //     } else {
+    //         for (let j = 0; j < y; j += 1) {
+    //             if (j < y - 1) {
+    //                 if ((j % 2) === 0) {
+    //                     x += ' ';
+    //                 } else {
+    //                     x += '*';
+    //                 }
+    //             } else {
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     x += '\n';
+    // }
+    // printText(x);
 
+    // const pole = [0, 1, 2];
+
+    // for (let i = 0; i < pole.length; i += 1) {
+    //     console.log(pole[i]);
+    // }
+
+    // pole.forEach((prvok) => {
+    //     console.log(prvok);
+    // });
+
+    // for (const prvok of pole) {
+    //     console.log(prvok);
+    // }
+
+    function jeParne(i) {
+        return (i % 2) === 0;
+    }
+
+    function dalsiZnak(jeParnyRiadok, jeParnyStlpec) {
+        return (jeParnyRiadok === jeParnyStlpec)
+            ? '*'
+            : ' ';
+    }
+    
+    function dalsiParnyRiadok(velkost) {
+        let result = '';
+        for (let i = 0; i < velkost; i += 1) {
+            result += dalsiZnak(true, jeParne(i));
+        }
+        return result;
+    }
+    
+    function dalsiNeparnyRiadok(velkost) {
+        let result = '';
+        for (let i = 0; i < (velkost - 1); i += 1) {
+            result += dalsiZnak(false, jeParne(i));
+        }
+        return result;
+    }
+    
+    function sachovnica(y) {
+        let x = '';
+        for (let i = 0; i < y; i += 1) {
+            if (jeParne(i)) {
+                x += dalsiParnyRiadok(y);
+            } else {
+                x += dalsiNeparnyRiadok(y);
+            }
+            x += '\n';
+        }
+        return x;
+    }
+    
+    let y = getInputText();
+    printText(sachovnica(y));
 });
 </script>
