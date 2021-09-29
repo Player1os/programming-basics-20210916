@@ -1,0 +1,81 @@
+<script src="../base.js"></script>
+<script>
+    // Čo robí funkcia map.
+    const array1 = [1, 2, 3]
+    const array2 = array1.map((prvok) => {
+        const nasobok = prvok * 5;
+        if ((prvok % 2) === 0) {
+            return nasobok;
+        }
+        return prvok;
+    })
+    console.log
+
+const hernePole =
+    [
+        ['X', ' ', 'O'],
+        ['X', ' ', ' '],
+        ['O', ' ', ' '],
+    ];
+    // 'X| |O\n'
+    // + '-+-+-\n'
+    // + 'X| | \n'
+    // + '-+-+-\n'
+    // + 'O| | \n'
+
+execute(() => {
+    let vysledok = '';
+
+    // // Verzia 1
+    // for (let riadok = 0; riadok < hernePole.length; riadok += 1) {
+    //     const hernyRiadok = hernePole[riadok];
+    //     for (let stlpec = 0; stlpec < hernyRiadok.length; stlpec += 1) {
+    //         vysledok += hernyRiadok[stlpec];
+    //         if (stlpec < hernyRiadok.length - 1) {
+    //             vysledok += '|'
+    //         } else {
+    //             if (riadok < hernePole.length - 1) {
+    //                 vysledok += '\n-+-+-\n'
+    //             } else {
+    //                 vysledok += '\n'
+    //             }
+    //         }
+    //     }
+    // }
+
+    // // Verzia 2
+    // for (let riadok = 0; riadok < hernePole.length; riadok += 1) {
+    //     const hernyRiadok = hernePole[riadok];
+    //     vysledok += hernyRiadok.join('|');
+
+    //     if (riadok < hernePole.length - 1) {
+    //         vysledok += '\n-+-+-\n'
+    //     } else {
+    //         vysledok += '\n'
+    //     }
+    // }
+
+    // // Verzia 3
+    // const poleRiadkov = [];
+    // for (let riadok = 0; riadok < hernePole.length; riadok += 1) {
+    //     const hernyRiadok = hernePole[riadok];
+    //     poleRiadkov.push(hernyRiadok.join('|'));
+    // }
+    // vysledok += poleRiadkov.join('\n-+-+-\n');
+
+    // // Verzia 4
+    // const poleRiadkov = [];
+    // for (const hernyRiadok of hernePole) {
+    //     poleRiadkov.push(hernyRiadok.join('|'));
+    // }
+    // vysledok += poleRiadkov.join('\n-+-+-\n');
+
+    // Verzia 5
+    const poleRiadkov = [1, 2, 3];
+    hernePole.forEach((prvok) => {
+        console.log(prvok);
+    });
+
+    printText(vysledok);
+});
+</script>
