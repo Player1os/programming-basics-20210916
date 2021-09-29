@@ -1,0 +1,65 @@
+<script>
+    const array1 = [1, 2, 3, 4, 5]
+    const vysledok = array1
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+        .map((prvok) => {
+            const nasobok = prvok * 5;
+            if ((prvok % 2) === 0) {
+                return nasobok;
+            }
+            return prvok;
+        })
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+        .filter((prvok) => {
+            return (prvok % 2) === 0;
+        })
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+        .reduce((akumulator, prvok) => {
+            return akumulator + prvok;
+        }, 0);
+
+    const array3 = [];
+    // Map
+    for (const prvok of array1) {
+        const nasobok = prvok * 5;
+
+        if ((prvok % 2) === 0) {
+            array3.push(nasobok);
+        } else {
+            array3.push(prvok);
+        }
+    }
+    // Filter
+    const array4 = [];
+    for (const prvok of array3) {
+        if ((prvok % 2) === 0) {
+            array4.push(prvok);
+        }
+    }
+    // Reduce
+    let vysledok2 = 0;
+    for (const prvok of array4) {
+        vysledok2 += prvok
+    }
+
+    console.log('Functional:', vysledok)
+    console.log('For loop:', vysledok2)
+
+    // Snaha napodobnit .map()
+    const mojMap = (arr, callback) => {
+        const newArr = [];
+
+        for (const prvok of arr) {
+            newArr.push(callback(prvok));
+        }
+
+        return newArr;
+    };
+
+    function nasobDvoma(prvok, element, zcas) {
+        return prvok * 2;
+    }
+
+    const array2 = [1, 2, 3];
+    console.log(mojMap(array2, nasobDvoma));    
+</script>
