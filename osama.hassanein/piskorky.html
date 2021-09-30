@@ -1,32 +1,13 @@
 <script src="../base.js"></script>
 <script>
-    // Čo robí funkcia map.
-    const array1 = [1, 2, 3]
-    const array2 = array1.map((prvok) => {
-        const nasobok = prvok * 5;
-        if ((prvok % 2) === 0) {
-            return nasobok;
-        }
-        return prvok;
-    })
-    console.log
+const tahovyVzor = /^([OX]):(\d+),(\d+)$/;
+const resetovaciVzor = /^\d+$/;
+let velkost = 0;
+let hernePole = [];
 
-const hernePole =
-    [
-        ['X', ' ', 'O'],
-        ['X', ' ', ' '],
-        ['O', ' ', ' '],
-    ];
-    // 'X| |O\n'
-    // + '-+-+-\n'
-    // + 'X| | \n'
-    // + '-+-+-\n'
-    // + 'O| | \n'
-
-execute(() => {
-    let vysledok = '';
-
+function vykresliPole() {
     // // Verzia 1
+    // let vysledok = '';
     // for (let riadok = 0; riadok < hernePole.length; riadok += 1) {
     //     const hernyRiadok = hernePole[riadok];
     //     for (let stlpec = 0; stlpec < hernyRiadok.length; stlpec += 1) {
@@ -44,6 +25,7 @@ execute(() => {
     // }
 
     // // Verzia 2
+    // let vysledok = '';
     // for (let riadok = 0; riadok < hernePole.length; riadok += 1) {
     //     const hernyRiadok = hernePole[riadok];
     //     vysledok += hernyRiadok.join('|');
@@ -56,6 +38,7 @@ execute(() => {
     // }
 
     // // Verzia 3
+    // let vysledok = '';
     // const poleRiadkov = [];
     // for (let riadok = 0; riadok < hernePole.length; riadok += 1) {
     //     const hernyRiadok = hernePole[riadok];
@@ -64,18 +47,62 @@ execute(() => {
     // vysledok += poleRiadkov.join('\n-+-+-\n');
 
     // // Verzia 4
+    // let vysledok = '';
     // const poleRiadkov = [];
     // for (const hernyRiadok of hernePole) {
     //     poleRiadkov.push(hernyRiadok.join('|'));
     // }
     // vysledok += poleRiadkov.join('\n-+-+-\n');
 
-    // Verzia 5
-    const poleRiadkov = [1, 2, 3];
-    hernePole.forEach((prvok) => {
-        console.log(prvok);
-    });
-
+    const vysledok = hernePole
+        .map((hernyRiadok) => {
+            return hernyRiadok.join('|');
+        })
+        .join('\n' + '-+'.repeat(velkost - 1) + '-\n');
+    
     printText(vysledok);
+}
+
+execute(() => {
+    clearText();
+    const vstup = getInputText();
+        
+    console.log(vstup.match(tahovyVzor));
+    if (tahovyVzor.test(vstup)) {
+        const [
+            znak,
+            suradnicaX,
+            suradnicaY
+        ] = vstup.match(tahovyVzor).slice(1); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+
+        // TODO: Kontrola suradnic, či nejdu mimo velkosti.
+
+        // TODO: Kontrola suradnic, či tam niečo už nie je.
+
+        // TODO: Zapis znaku do poľa.
+
+        // TODO: Vyhodnotenie hry.
+        // -- zistím, či niekto po zápise posledného znaku práve nevyhral?
+        // -- zistím, či sa hra neskončila remízou?
+        
+        vykresliPole();
+    } else if (resetovaciVzor.test(vstup)) {
+        // Načítať parametre nového herného poľa.
+        velkost = parseInt(vstup);
+        hernePole = [];
+        
+        // Pripraviť nové herné pole.
+        for (let riadok = 0; riadok < velkost; riadok += 1) {
+            const hernyRiadok = [];
+            for (let stlpec = 0; stlpec < velkost; stlpec += 1) {
+                hernyRiadok.push(' ');
+            }
+            hernePole.push(hernyRiadok);
+        }
+
+        vykresliPole();
+    } else {
+        printText('Máš to zle, buď mi daj číslo alebo niečo na štýl "X:0,0", či "O:1,2"');
+    }
 });
 </script>
