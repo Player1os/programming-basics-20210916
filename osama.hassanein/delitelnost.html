@@ -1,0 +1,37 @@
+<script src="../base.js"></script>
+<script>
+execute(() => {
+    const vstup = getInputText();
+
+    // switch (true) {
+    //     case (vstup % 2) === 0:
+    //         console.log('som delitelny 2ma');
+    //         break;
+    //     case (vstup % 3) === 0:
+    //         console.log('som delitelny 3ma');
+    //         break;
+    //     case (vstup % 5) === 0:
+    //         console.log('som delitelny 5ma');
+    //         break;
+    //     default:
+    //         console.log('nie som delitelny nicim :(');
+    // }
+
+    let somDel = false
+    if ((vstup % 2) === 0) {
+        console.log('som delitelny 2ma');
+        somDel = true
+    }
+    if ((vstup % 3) === 0) {
+        console.log('som delitelny 3ma');
+        somDel = true
+    }
+    if ((vstup % 5) === 0) {
+        console.log('som delitelny 5ma');
+        somDel = true
+    }
+    if (!somDel) {
+        console.log('nie som delitelny nicim :(');
+    }
+})
+</script>
